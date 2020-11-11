@@ -135,3 +135,29 @@ drwxrwxrwxt 6 root root 4096 Dec 15 11:45 /tmp
 
 `sudo chmod +t mydir` or `sudo chmod 1755 mydir`
 
+## Processes
+
+Brief summary. More in-detail info can be found at <https://linuxjourney.com/> Processes section.
+
+## ps
+
+`ps` shows a snapshot of the current processes
+
+* PID: Process ID
+* TTY: Controlling terminal associated with the process
+* STAT: Process status code
+* TIME: Total CPU usage time
+* CMD: Name of executable/command
+
+`ps aux`
+
+* `a` displays all processes running, including the ones being ran by other users.
+* `u` shows more details about the processes.
+* `x` lists all processes that don't have a TTY associated with it.
+
+`top` gives **real time information** about the processes running on your system instead of a snapshot.
+
+## Controlling terminal
+
+Processes are usually bound to a controlling terminal. If you were running a program on your shell window such as find and you closed the window, your process would also go with it. More details in <https://linuxjourney.com/lesson/controlling-terminal>
+
