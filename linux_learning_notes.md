@@ -180,24 +180,13 @@ Often times you will encounter an obscure package that only comes in the form of
 
 Depending on what compile method that the developer used, you'll have to use different commands. Most commonly you'll see basic `make` compilation. Inside the package contents will be a **configure** script, this script checks for dependencies on your system and if you are missing anything, you'll see an error and you'll need to fix those dependencies.
 
-$ ./configure
+`./configure` -> The `./` allows you to execute a script in the current directory.
 
-The ./ allows you to execute a script in the current directory.
+`sudo make install` Inside of the package contents, there is a file called **Makefile** that contains rules to building the software. When you run the make command, it looks at this file to build the software. This command actually installs the package, it will copy the correct files to the correct locations on your computer.
 
-$ make
+`sudo make uninstall` If you want to uninstall the package.
 
-Inside of the package contents, there is a file called Makefile that contains rules to building the software. When you run the make command, it looks at this file to build the software.
+**Be wary when using make install**, you may not realize how much is actually going on in the background. If you decide to remove this package, you may not actually remove everything because you didn't realize what was added to your system. Instead forget everything about make install that I just explained to you and use the `checkinstall` command. This command will make a `.deb` file for you that you can **easily install and uninstall**.
 
-$ sudo make install
+`sudo checkinstall` Will essentially "make install" and build a .deb package and install it. This makes it easier to remove the package later on.
 
-This command actually installs the package, it will copy the correct files to the correct locations on your computer.
-
-If you want to uninstall the package, use:
-
-$ sudo make uninstall
-
-Be wary when using make install, you may not realize how much is actually going on in the background. If you decide to remove this package, you may not actually remove everything because you didn't realize what was added to your system. Instead forget everything about make install that I just explained to you and use the checkinstall command. This command will make a .deb file for you that you can easily install and uninstall.
-
-$ sudo checkinstall
-
-This command will essentially "make install" and build a .deb package and install it. This makes it easier to remove the package later on.
