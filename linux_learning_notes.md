@@ -161,3 +161,43 @@ Brief summary. More in-detail info can be found at <https://linuxjourney.com/> P
 
 Processes are usually bound to a controlling terminal. If you were running a program on your shell window such as find and you closed the window, your process would also go with it. More details in <https://linuxjourney.com/lesson/controlling-terminal>
 
+## Packages
+
+### Compressing, tar and gzip
+
+`gzip file1` compress a single file
+`tar cvf mytarfile.tar file1 file2` pack a tar that contains 2 files
+`tar xvf mytarfile.tar` unpack
+`tar -xzvf package.tar.gz` decompress and unpack
+
+### Compile Source Code
+
+Often times you will encounter an obscure package that only comes in the form of pure source code. You'll need to:
+
+* install the tools to compile source code: `sudo apt install build-essential`
+* extract the package file: `tar -xzvf package.tar.gz`
+* look at the README or INSTALL file (inside the package) for instructions
+
+Depending on what compile method that the developer used, you'll have to use different commands. Most commonly you'll see basic `make` compilation. Inside the package contents will be a **configure** script, this script checks for dependencies on your system and if you are missing anything, you'll see an error and you'll need to fix those dependencies.
+
+$ ./configure
+
+The ./ allows you to execute a script in the current directory.
+
+$ make
+
+Inside of the package contents, there is a file called Makefile that contains rules to building the software. When you run the make command, it looks at this file to build the software.
+
+$ sudo make install
+
+This command actually installs the package, it will copy the correct files to the correct locations on your computer.
+
+If you want to uninstall the package, use:
+
+$ sudo make uninstall
+
+Be wary when using make install, you may not realize how much is actually going on in the background. If you decide to remove this package, you may not actually remove everything because you didn't realize what was added to your system. Instead forget everything about make install that I just explained to you and use the checkinstall command. This command will make a .deb file for you that you can easily install and uninstall.
+
+$ sudo checkinstall
+
+This command will essentially "make install" and build a .deb package and install it. This makes it easier to remove the package later on.
