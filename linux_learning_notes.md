@@ -50,6 +50,19 @@ Look for text and files. Allows regex.
 `-i` case insensitive
 `ls /somedir | grep '.txt$'` look for txt files inside folder
 
+### find
+
+Search for files in a directory hier.
+Example: `find . -type f -size 33c -group bandit6 -user bandit7 2>/dev/null -exec cat {} +`
+
+* `find .` in current directory and its subdirs
+* `-type f` files (`d` for dirs)
+* `-size 33c` size of file exactly 33 bytes. Use `+33c` for "bigger than".
+* `-group`, `-user` belonging to..
+* `2>/dev/null` discard error messages such as "Permission denied"
+* `-exec` do something with the results of `find`, in this case:
+* `cat {} +` show the contents. `+` indicates that if there is more than one result, it should be appended to the `cat` param list. Not including `+` will only `cat` the first one.
+
 ## VIM
 
 Commands
@@ -189,4 +202,16 @@ Depending on what compile method that the developer used, you'll have to use dif
 **Be wary when using make install**, you may not realize how much is actually going on in the background. If you decide to remove this package, you may not actually remove everything because you didn't realize what was added to your system. Instead forget everything about make install that I just explained to you and use the `checkinstall` command. This command will make a `.deb` file for you that you can **easily install and uninstall**.
 
 `sudo checkinstall` Will essentially "make install" and build a .deb package and install it. This makes it easier to remove the package later on.
+
+## Devices
+
+(TODO)
+
+## Filesystem
+
+(TODO)
+
+## Process Utilization
+
+
 
